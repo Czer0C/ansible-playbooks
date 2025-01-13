@@ -1,0 +1,10 @@
+---
+- name: Create test.sh file on all servers
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Copy test.sh to home directory
+      copy:
+        src: temp.sh
+        dest: "~/test.sh"
+        mode: '0755'

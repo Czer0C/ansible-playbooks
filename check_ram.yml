@@ -1,0 +1,17 @@
+---
+- name: Check server RAM
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Get total and free memory
+      shell: free -h
+      register: memory_info
+
+    - name: Get cpu info
+      shell: lscpu
+      register: cpu_info
+
+    - name: Display memory information
+      debug:
+        msg: "{{ memory_info.stdout }}"
+        msg: "{{ cpu_info.stdout }}"
